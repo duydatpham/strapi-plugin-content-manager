@@ -43,6 +43,9 @@ const Header = ({
     layout,
   ]);
 
+  const ___loading_value = get(modifiedData, '___loading_value', 0);
+
+
   const currentContentTypeName = useMemo(() => get(layout, ['info', 'name']), [layout]);
 
   const didChangeData = useMemo(() => {
@@ -77,7 +80,7 @@ const Header = ({
     if ((isCreatingEntry && canCreate) || (!isCreatingEntry && canUpdate)) {
       headerActions = [
         {
-          disabled: !didChangeData,
+          disabled: !didChangeData || ___loading_value > 0,
           color: 'success',
           label: formatMessage({
             id: getTrad('containers.Edit.submit'),
@@ -110,7 +113,7 @@ const Header = ({
 
       const action = {
         ...primaryButtonObject,
-        disabled: isCreatingEntry || didChangeData,
+        disabled: isCreatingEntry || didChangeData || ___loading_value > 0,
         isLoading,
         label: formatMessage({ id: labelID }),
         onClick,
@@ -132,6 +135,7 @@ const Header = ({
     initialData,
     onPublish,
     checkIfHasDraftRelations,
+    ___loading_value
   ]);
 
   const headerProps = useMemo(() => {

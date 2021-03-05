@@ -153,6 +153,13 @@ const EditViewDataManagerProvider = ({
       value,
     });
   }, []);
+  const increaseKeys = useCallback(({ target: { name, value } }) => {
+    dispatch({
+      type: 'INCREASE_KEYS',
+      keys: name.split('.'),
+      value,
+    });
+  }, []);
 
   const addRepeatableComponentToField = useCallback(
     (keys, componentUid, shouldCheckErrors = false) => {
@@ -462,6 +469,7 @@ const EditViewDataManagerProvider = ({
         addNonRepeatableComponentToField,
         addRelation,
         addUpdateKeys,
+        increaseKeys,
         addRepeatableComponentToField,
         allLayoutData,
         checkFormErrors,

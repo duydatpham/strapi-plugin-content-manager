@@ -82,6 +82,10 @@ const reducer = (state, action) => {
         }
         return fromJS(action.value);
       });
+    case 'INCREASE_KEYS':
+      return state.updateIn([...action.keys], list => {
+        return (list || 0) + action.value
+      });
     case 'INIT_FORM': {
       return state
         .update('formErrors', () => fromJS({}))

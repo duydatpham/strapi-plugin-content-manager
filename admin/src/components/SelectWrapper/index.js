@@ -36,7 +36,7 @@ function SelectWrapper({
 }) {
   // Disable the input in case of a polymorphic relation
   const isMorph = useMemo(() => relationType.toLowerCase().includes('morph'), [relationType]);
-  const { addRelation, addUpdateKeys, modifiedData, moveRelation, onChange, onRemoveRelation } = useDataManager();
+  const { addRelation, addUpdateKeys, modifiedData, moveRelation, onChange, onRemoveRelation, increaseKeys } = useDataManager();
 
   const isSingle = ['oneWay', 'oneToOne', 'manyToOne', 'oneToManyMorph', 'oneToOneMorph'].includes(
     relationType
@@ -137,12 +137,19 @@ function SelectWrapper({
       }
 
       try {
+
+        increaseKeys({ target: { name: `modifiedData.___loading_value`, value: 1 } });
+        increaseKeys({ target: { name: `initialData.___loading_value`, value: 1 } });
+
         const data = await request(endPoint, {
           method: 'GET', params: {
             [`${via}`]: id_relation,
             _limit: valueCount
           }, signal
         });
+
+        increaseKeys({ target: { name: `modifiedData.___loading_value`, value: -1 } });
+        increaseKeys({ target: { name: `initialData.___loading_value`, value: -1 } });
 
         addUpdateKeys({ target: { name: `modifiedData.___${name}_loaded`, value: true } });
         addUpdateKeys({ target: { name: `modifiedData.${name}`, value: fromJS(data) } });

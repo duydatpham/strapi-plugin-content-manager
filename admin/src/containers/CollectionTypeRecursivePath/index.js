@@ -18,7 +18,6 @@ const CollectionTypeRecursivePath = ({
     url,
   },
 }) => {
-  console.log('CollectionTypeRecursivePath')
   const { isLoading, layout, updateLayout } = useFetchContentTypeLayout(slug);
 
   const { rawContentTypeLayout, rawComponentsLayouts } = useMemo(() => {
