@@ -84,6 +84,17 @@ const EditView = ({ isSingleType, goBack, layout, slug, state, id, origin }) => 
     );
   }, [currentContentTypeLayoutData]);
 
+
+  const relationDontEdit = useMemo(() => {
+    if (!currentContentTypeLayoutData.layouts) {
+      return [];
+    }
+
+    return Object.keys(currentContentTypeLayoutData.attributes).filter(key => currentContentTypeLayoutData.attributes[key].type == 'relation' && !currentContentTypeLayoutData.layouts.editRelations.some(edit => edit.name == key))
+
+  }, [currentContentTypeLayoutData]);
+
+
   if (isLoadingForPermissions) {
     return <LoadingIndicatorPage />;
   }
@@ -123,7 +134,12 @@ const EditView = ({ isSingleType, goBack, layout, slug, state, id, origin }) => 
             isSingleType={isSingleType}
             onPost={onPost}
             onPublish={onPublish}
-            onPut={onPut}
+            onPut={(formData, trackerProperty) => {
+              relationDontEdit.forEach(key => {
+                delete formData[key];
+              })
+              onPut(formData, trackerProperty)
+            }}
             onUnpublish={onUnpublish}
             readActionAllowedFields={readActionAllowedFields}
             redirectToPreviousPage={goBack}
