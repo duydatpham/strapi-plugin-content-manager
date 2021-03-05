@@ -37,7 +37,6 @@ const findCreatorRoles = entity => {
 
 module.exports = {
   async assocCreatorRoles(entity) {
-    console.log('entity-manager::find')
     if (!entity) {
       return entity;
     }
@@ -47,32 +46,26 @@ module.exports = {
   },
 
   find(params, model, populate) {
-    console.log('entity-manager::find', model, populate, params)
     return strapi.entityService.find({ params, populate: [] }, { model });
   },
 
   findPage(params, model, populate) {
-    console.log('entity-manager::findPage')
     return strapi.entityService.findPage({ params, populate }, { model });
   },
 
   findWithRelationCounts(params, model, populate) {
-    console.log('entity-manager::findWithRelationCounts', params, model, populate)
     return strapi.entityService.findWithRelationCounts({ params, populate }, { model });
   },
 
   search(params, model, populate) {
-    console.log('entity-manager::search')
     return strapi.entityService.search({ params, populate }, { model });
   },
 
   searchPage(params, model, populate) {
-    console.log('entity-manager::searchPage')
     return strapi.entityService.searchPage({ params, populate }, { model });
   },
 
   searchWithRelationCounts(params, model, populate) {
-    console.log('entity-manager::searchWithRelationCounts', params, model, populate)
     return strapi.entityService.searchWithRelationCounts({ params, populate }, { model });
   },
 
@@ -81,7 +74,6 @@ module.exports = {
   },
 
   async findOne(id, model, populate) {
-    console.log('entity-manager::findOne', model, populate, id)
     return strapi.entityService.findOne({ params: { id }, populate }, { model });
   },
 

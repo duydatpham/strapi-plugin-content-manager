@@ -18,7 +18,6 @@ function LayoutDndProvider({
   setEditFieldToSelect,
   ...rest
 }) {
-  console.log('LayoutDndProvider')
   return (
     <LayoutDndContext.Provider
       value={{

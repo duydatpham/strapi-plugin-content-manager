@@ -22,7 +22,6 @@ import { createPossibleMainFieldsForModelsAndComponents, getInputProps } from '.
 import { unformatLayout } from './utils/layout';
 
 const EditSettingsView = ({ components, mainLayout, isContentTypeView, slug, updateLayout }) => {
-  console.log('EditSettingsView', components, mainLayout, isContentTypeView, slug, updateLayout)
   const { push } = useHistory();
   const { currentEnvironment, emitEvent, plugins } = useGlobalContext();
 

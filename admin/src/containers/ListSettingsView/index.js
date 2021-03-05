@@ -22,7 +22,6 @@ import reducer, { initialState } from './reducer';
 import forms from './forms.json';
 
 const ListSettingsView = ({ layout, slug, updateLayout }) => {
-  console.log('ListSettingsView')
   const [reducerState, dispatch] = useReducer(reducer, initialState, () =>
     init(initialState, layout)
   );

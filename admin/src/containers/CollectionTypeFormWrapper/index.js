@@ -285,7 +285,6 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, from, slug, id, or
           type: 'success',
           message: { id: getTrad('success.record.save') },
         });
-        console.log('response', response)
 
         let data = cleanReceivedData(response)
 

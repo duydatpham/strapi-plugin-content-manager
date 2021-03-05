@@ -15,7 +15,6 @@ const SingleTypeRecursivePath = ({
     url,
   },
 }) => {
-  console.log('SingleTypeRecursivePath')
   const { isLoading, layout, updateLayout } = useFetchContentTypeLayout(slug);
 
   const { rawContentTypeLayout, rawComponentsLayouts } = useMemo(() => {

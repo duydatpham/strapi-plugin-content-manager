@@ -18,7 +18,6 @@ const SingleTypeFormWrapper = ({ allLayoutData, children, from, slug }) => {
   const { push } = useHistory();
   const emitEventRef = useRef(emitEvent);
   const [isCreatingEntry, setIsCreatingEntry] = useState(true);
-console.log('SingleTypeFormWrapper')
   const [
     { componentsDataStructure, contentTypeDataStructure, data, isLoading, status },
     dispatch,

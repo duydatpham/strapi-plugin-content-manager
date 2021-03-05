@@ -9,7 +9,6 @@ import { crudInitialState, crudReducer } from '../../sharedReducers';
 import EditSettingsView from '../EditSettingsView';
 
 const ComponentSettingsView = () => {
-  console.log('ComponentSetttingsView')
   const [{ isLoading, data: layout }, dispatch] = useReducer(crudReducer, crudInitialState);
   const schemasSelector = useMemo(makeSelectModelAndComponentSchemas, []);
   const { schemas } = useSelector(state => schemasSelector(state), []);

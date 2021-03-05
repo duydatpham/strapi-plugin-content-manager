@@ -97,7 +97,6 @@ function ListView({
     },
   } = layout;
 
-  console.log('ListView')
   const { emitEvent } = useGlobalContext();
   const emitEventRef = useRef(emitEvent);
   const viewPermissions = useMemo(() => generatePermissionsObject(slug), [slug]);

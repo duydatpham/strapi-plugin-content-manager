@@ -22,7 +22,6 @@ import { getData, getDataSucceeded, resetProps } from './actions';
 import makeSelectMain from './selectors';
 
 function Main({ getData, getDataSucceeded, isLoading, resetProps }) {
-  console.log('Main')
   useEffect(() => {
     const abortController = new AbortController();
     const { signal } = abortController;
